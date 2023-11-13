@@ -1,18 +1,29 @@
 GBC_LOADED = 0;
 
-GBC_LOADER = CreateFrame("FRAME", "GBC_LOADER");
-GBC_LOADER:RegisterEvent("BANKFRAME_OPENED");
-GBC_LOADER:SetScript("OnEvent", function() GBC_LOADED = 1; end);
 
 GBC_UNLOADER = CreateFrame("FRAME", "GBC_UNLOADER");
 GBC_UNLOADER:RegisterEvent("BANKFRAME_CLOSED");
-GBC_UNLOADER:SetScript("OnEvent", function() GBC_LOADED = 0; GuildBankClassic:Hide(); end);
+GBC_UNLOADER:SetScript("OnEvent", function() GBC_LOADED = 0; 
 
-GuildBankClassicButton1 = CreateFrame("BUTTON", "Button", BankFrame, "UIPanelButtonTemplate");
+GuildBankClassic:Hide(); 
+GuildBankClassicButton1:Hide();
+
+end);
+
+GBC_LOADER = CreateFrame("FRAME", "GBC_LOADER");
+GBC_LOADER:RegisterEvent("BANKFRAME_OPENED");
+GBC_LOADER:SetScript("OnEvent", function() GBC_LOADED = 1; 
+
+GuildBankClassicButton1 = CreateFrame("BUTTON", "Button", CENTER, "UIPanelButtonTemplate");
 GuildBankClassicButton1:SetWidth(45);
 GuildBankClassicButton1:SetHeight(24);
-GuildBankClassicButton1:SetPoint("LEFT", BankFrame, "BOTTOM", -3, -14);
+GuildBankClassicButton1:SetPoint("CENTER", UIParent, "BOTTOM", 0, 150);
 GuildBankClassicButton1:SetText("GBC");
+GuildBankClassicButton1:SetMovable(true);
+GuildBankClassicButton1:EnableMouse(true);
+GuildBankClassicButton1:RegisterForDrag("LeftButton");
+GuildBankClassicButton1:SetScript("OnDragStart", GuildBankClassicButton1.StartMoving);
+GuildBankClassicButton1:SetScript("OnDragStop", GuildBankClassicButton1.StopMovingOrSizing);
 GuildBankClassicButton1:SetScript("OnClick", function() 
 
 if GBC_LOADED == 0 
@@ -2016,23 +2027,7 @@ else
 GBC_Backpack_1_16 = ""
 GBC_BackpackID_1_16 = ""
 end
---[[
-local id, texture, checkRelic = GetInventorySlotInfo("Bag0Slot");
-if (id) == 20 then local id = GetInventoryItemID("player", 20); GBC_CharBag1 = (id) end
-if GBC_CharBag1 == nil then GBC_CharBagID1 = "" else GBC_CharBagID1 = GBC_CharBag1 end
 
-local id, texture, checkRelic = GetInventorySlotInfo("Bag1Slot");
-if (id) == 21 then local id = GetInventoryItemID("player", 21); GBC_CharBag2 = (id) end
-if GBC_CharBag2 == nil then GBC_CharBagID2 = "" else GBC_CharBagID2 = GBC_CharBag2 end
-
-local id, texture, checkRelic = GetInventorySlotInfo("Bag2Slot");
-if (id) == 22 then local id = GetInventoryItemID("player", 22); GBC_CharBag3 = (id) end
-if GBC_CharBag3 == nil then GBC_CharBagID3 = "" else GBC_CharBagID3 = GBC_CharBag3 end
-
-local id, texture, checkRelic = GetInventorySlotInfo("Bag3Slot");
-if (id) == 23 then local id = GetInventoryItemID("player", 23); GBC_CharBag4 = (id) end
-if GBC_CharBag4 == nil then GBC_CharBagID4 = "" else GBC_CharBagID4 = GBC_CharBag4 end
-]]
 
 local GBC_CharBag1 = GetInventoryItemID("player", 20);
 if GBC_CharBag1 == 20 then GBC_CharBagID1 = "" elseif GBC_CharBag1 == nil then GBC_CharBagID1 = "" else GBC_CharBagID1 = GBC_CharBag1 end
@@ -2047,29 +2042,27 @@ local GBC_CharBag4 = GetInventoryItemID("player", 23);
 if GBC_CharBag4 == 23 then GBC_CharBagID4 = "" elseif GBC_CharBag4 == nil then GBC_CharBagID4 = "" else GBC_CharBagID4 = GBC_CharBag4 end
 
 
-local GBC_BankBag1 = GetInventoryItemID("player", 76);
-if GBC_BankBag1 == 76 then GBC_BankBagID1 = "" elseif GBC_BankBag1 == nil then GBC_BankBagID1 = "" else GBC_BankBagID1 = GBC_BankBag1 end
+local GBC_BankBag1 = GetInventoryItemID("player", 72);
+if GBC_BankBag1 == 72 then GBC_BankBagID1 = "" elseif GBC_BankBag1 == nil then GBC_BankBagID1 = "" else GBC_BankBagID1 = GBC_BankBag1 end
 
-local GBC_BankBag2 = GetInventoryItemID("player", 77);
-if GBC_BankBag2 == 77 then GBC_BankBagID2 = "" elseif GBC_BankBag2 == nil then GBC_BankBagID2 = "" else GBC_BankBagID2 = GBC_BankBag2 end
+local GBC_BankBag2 = GetInventoryItemID("player", 73);
+if GBC_BankBag2 == 73 then GBC_BankBagID2 = "" elseif GBC_BankBag2 == nil then GBC_BankBagID2 = "" else GBC_BankBagID2 = GBC_BankBag2 end
 
-local GBC_BankBag3 = GetInventoryItemID("player", 78);
-if GBC_BankBag3 == 78 then GBC_BankBagID3 = "" elseif GBC_BankBag3 == nil then GBC_BankBagID3 = "" else GBC_BankBagID3 = GBC_BankBag3 end
+local GBC_BankBag3 = GetInventoryItemID("player", 74);
+if GBC_BankBag3 == 74 then GBC_BankBagID3 = "" elseif GBC_BankBag3 == nil then GBC_BankBagID3 = "" else GBC_BankBagID3 = GBC_BankBag3 end
 
-local GBC_BankBag4 = GetInventoryItemID("player", 79);
-if GBC_BankBag4 == 79 then GBC_BankBagID4 = "" elseif GBC_BankBag4 == nil then GBC_BankBagID4 = "" else GBC_BankBagID4 = GBC_BankBag4 end
+local GBC_BankBag4 = GetInventoryItemID("player", 75);
+if GBC_BankBag4 == 75 then GBC_BankBagID4 = "" elseif GBC_BankBag4 == nil then GBC_BankBagID4 = "" else GBC_BankBagID4 = GBC_BankBag4 end
 
-local GBC_BankBag5 = GetInventoryItemID("player", 80);
-if GBC_BankBag5 == 80 then GBC_BankBagID5 = "" elseif GBC_BankBag5 == nil then GBC_BankBagID5 = "" else GBC_BankBagID5 = GBC_BankBag5 end
+local GBC_BankBag5 = GetInventoryItemID("player", 76);
+if GBC_BankBag5 == 76 then GBC_BankBagID5 = "" elseif GBC_BankBag5 == nil then GBC_BankBagID5 = "" else GBC_BankBagID5 = GBC_BankBag5 end
 
-local GBC_BankBag6 = GetInventoryItemID("player", 81);
-if GBC_BankBag6 == 81 then GBC_BankBagID6 = "" elseif GBC_BankBag6 == nil then GBC_BankBagID6 = "" else GBC_BankBagID6 = GBC_BankBag6 end
+local GBC_BankBag6 = GetInventoryItemID("player", 77);
+if GBC_BankBag6 == 77 then GBC_BankBagID6 = "" elseif GBC_BankBag6 == nil then GBC_BankBagID6 = "" else GBC_BankBagID6 = GBC_BankBag6 end
+
 
 GBC_money = GetMoney();
 GBC_Money_Data = (("%dg %ds %dc"):format(GBC_money / 100 / 100, (GBC_money / 100) % 100, GBC_money % 100));
-
-
-
 
 
 GBC_BankStorageData = {
@@ -2403,11 +2396,11 @@ GuildBankClassic:Show();
 GuildBankClassic.EditBox:HighlightText();
 
 GuildBankClassic.Comment = CreateFrame("EditBox", "GuildBankClassic_Comment", GuildBankClassic);
-GuildBankClassic.Comment:SetWidth(150);
+GuildBankClassic.Comment:SetWidth(100);
 GuildBankClassic.Comment:SetHeight(24);
-GuildBankClassic.Comment:SetPoint("LEFT", BankFrame, "BOTTOM", 50, -67);
+GuildBankClassic.Comment:SetPoint("RIGHT", GuildBankClassicButton1, "RIGHT", -35, 0);
 GuildBankClassic.Comment:SetFontObject("GameTooltipTextSmall");
-GuildBankClassic.Comment:SetText("Press CTRL+C to copy data");
+GuildBankClassic.Comment:SetText("CTRL+C to copy");
 GuildBankClassic.Comment:SetAutoFocus(false);
 GuildBankClassic.Comment:SetMultiLine(false);
 GuildBankClassic.Comment:EnableMouse(false);
@@ -2417,7 +2410,7 @@ end);
 
 GuildBankClassic = CreateFrame("Frame", "GuildBankClassic", UIParent);
 GuildBankClassic:SetFrameStrata("HIGH");
-GuildBankClassic:SetPoint("BOTTOM", BankFrame, "RIGHT", -75,-270);
+GuildBankClassic:SetPoint("RIGHT", GuildBankClassicButton1, "RIGHT", 0, -42);
 GuildBankClassic:SetWidth(150);
 GuildBankClassic:SetHeight(60);
 
@@ -2454,3 +2447,5 @@ GuildBankClassic.ScrollFrame = CreateFrame("ScrollFrame", "GuildBankClassic_Scro
 GuildBankClassic.ScrollFrame:SetPoint("TOPLEFT", GuildBankClassic, "TOPLEFT", 6, -6);
 GuildBankClassic.ScrollFrame:SetPoint("BOTTOMRIGHT", GuildBankClassic, "BOTTOMRIGHT", -6, 6);
 GuildBankClassic.ScrollFrame:SetScrollChild(GuildBankClassic.EditBox);
+
+end);
