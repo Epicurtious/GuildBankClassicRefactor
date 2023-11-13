@@ -129,9 +129,7 @@ GBC_LOADER:SetScript("OnEvent", function()
 			
 			-- debug for editbox string
 			-- print(GBC_Editbox_Text)
-			print("test1")
 			GuildBankClassic.EditBox:SetText(GBC_Editbox_Text);
-			print("test2")
 		end
 		GuildBankClassic:Show(); 
 		GuildBankClassic.EditBox:HighlightText();
