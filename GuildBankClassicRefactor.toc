@@ -1,7 +1,7 @@
-## Interface: 11302
-## Title: GuildBankClassic
-## Author: dizelok3@gmail.com
-## Version: 1.0.1
+## Interface: 11404
+## Title: GuildBankClassicRefactor
+## Author: curtishenry117@gmail.com
+## Version: 1.0.2
 
-GuildBankClassic.lua
+GuildBankClassicRefactor.lua
 
