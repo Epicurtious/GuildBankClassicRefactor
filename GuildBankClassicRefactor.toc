@@ -1,4 +1,4 @@
-## Interface: 11404
+## Interface: 11502
 ## Title: GuildBankClassicRefactor
 ## Author: curtishenry117@gmail.com
 ## Version: 1.0.2
